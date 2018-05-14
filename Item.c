@@ -23,7 +23,7 @@ void CriarItem(char palavra[50], struct no **raiz){
    (*raiz)-> dir = NULL;
    
    }
-   
+        
 }
   
   
