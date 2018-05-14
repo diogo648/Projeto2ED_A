@@ -5,7 +5,7 @@
 typedef struct tipoItem Item;
 
 struct tipoItem {
- char palavra[50]; /* string que contem a palavra do texto*/
+ char palavra[]; /* string que contem a palavra do texto*/
  int quantidade;  /* Armazena a quantidade de vezes que a palavra aparece  */
  struct Item *dir,*esq;
 };
