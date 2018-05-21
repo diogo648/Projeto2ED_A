@@ -1,7 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
-#include "item.h"
 
 int main (int argc, char** argv) {
   
@@ -13,10 +12,18 @@ int main (int argc, char** argv) {
      printf("\narg%d=%s", i, argv[i]);
  }
   
-  while(!EOF){
+  while(!feof(stdin)){
+     
+
     
     scanf("%s",palavra);
 
+    if(!feof(stdin)){
+    	printf("%s \n",palavra);
+    }
+ 
   }
   
 }
+
+
