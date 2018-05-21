@@ -6,4 +6,15 @@
 int main (int argc, char** argv) {
   
   
+  int i=0;
+  char palavra[10];
+             
+ for (i=1; i< argc; i++) {
+     printf("\narg%d=%s", i, argv[i]);
+ }
+  
+  while()
+
+  
+  
 }
