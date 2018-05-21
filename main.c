@@ -13,8 +13,10 @@ int main (int argc, char** argv) {
      printf("\narg%d=%s", i, argv[i]);
  }
   
-  while()
+  while(!EOF){
+    
+    scanf("%s",palavra);
 
-  
+  }
   
 }
