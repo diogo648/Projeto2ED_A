@@ -3,11 +3,11 @@ all: prog
 item.o: item.c
 	gcc -c item.c
 
-matriz.o: matriz.c
-	gcc -c matriz.c
+st.o: st.c
+	gcc -c st.c
 
 main.o: main.c
 	gcc -c main.c 
 
-prog: matriz.o main.o lista.o
-	gcc -o prog matriz.o lista.o main.o
+prog: item.o main.o st.o
+	gcc -o prog item.o st.o main.o
