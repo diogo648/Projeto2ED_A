@@ -12,6 +12,18 @@ int main (int argc, char** argv) {
      printf("\narg%d=%s", i, argv[i]);
  }
   
+  
+  switch (argv[i]){
+      
+       case "-n":
+       case "-w":
+       case: "-r":
+       case: "pMAX":
+      
+      
+      
+  }
+  
   while(!feof(stdin)){
      
 
