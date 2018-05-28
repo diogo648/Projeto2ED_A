@@ -1,11 +1,13 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
+#include "item.h"
 
 int main (int argc, char** argv) {
   
-  
-  int i=0;
+  Item *item; 
+
+  int i;
   char palavra[20];
              
  for (i=1; i< argc; i++) {
@@ -13,7 +15,7 @@ int main (int argc, char** argv) {
  }
   
   
-  switch (argv[i]){
+  /*switch (argv[i]){
       
        case "-n":
        case "-w":
@@ -22,18 +24,20 @@ int main (int argc, char** argv) {
       
       
       
-  }
+  }*/
   
-  while(!feof(stdin)){
+while(!feof(stdin)){
      
+  scanf("%s",palavra);
 
-    
-    scanf("%s",palavra);
-
-    if(!feof(stdin)){
-    	printf("%s \n",palavra);
-    }
- 
+  if(!feof(stdin)){
+   
+    //printf("%s \n", palavra);
+    criarItem(palavra,&item,0,1);
   }
+ 
+}
+
+imprimirArv(item);
   
 }
