@@ -5,9 +5,7 @@
 #include "ST.h"
 
 int main (int argc, char** argv) {
-  
 
-//char * parm1; //Parametro1 passado pelo usuario no terminal
 no *lista = NULL;
 Item *item = NULL;
 Item *arvore = NULL;
@@ -18,6 +16,10 @@ char *n;
 char *fileIn;
 char *fileOut;
 char *word;
+int flagW=0; //Flag utilizada para verificar se o comando -w foi passado pelo usuario
+int flagR=0; //Flag utilizada para verificar se o comando -r foi passado pelo usuario
+int flagS=0; //Flag utilizada para verificar se o comando -s foi passado pelo usuario
+FILE *fp;
 
   for (int i=1; i< argc; i++) {
 
@@ -28,24 +30,24 @@ char *word;
     }
 
     if(strncmp(argv[i],"-r",2) == 0){ //Carregar informacoes da tabela de simbolos de um arquivo
-
+      
+      flagR = 1; //Comando passado pelo usuario
       fileIn = strtok(argv[i],"-r");
-      printf("%s ",fileIn);
     }
 
     if(strncmp(argv[i],"-w",2) == 0){ //Salvar informacoes da tabela de simbolos em um arquivo
 
+       flagW = 1; //Comando passado pelo usuario
        fileOut = strtok(argv[i],"-w");
-       printf("%s ",fileOut);
     }
 
      if(strncmp(argv[i],"-s",2) == 0){ //Buscar palavra especifica
 
        word = strtok(argv[i],"-s");
-       printf("%s ",word);
     }
 
   }
+
 
   while(!feof(stdin)){
      
@@ -62,9 +64,23 @@ char *word;
   maiores(&arvore,&lista);//Transforma em lista
   exibeItens(lista,numeroMaiores);//Imprime os mais frequentes
 
+  if(flagR == 1 && flagW == 1 || flagR == 0 && flagW == 1){ //Se o usuario passou os dois comandos -r e -w, o -w tem a prioridade
+    
+    fp=fopen(fileOut,"w");
+    fprintf(fp, "Teste!!!!!");//Escreve o conteudo da lista no arquivo recem criado
+    fclose(fp);
+  }
+
+  if(flagR == 1 && flagW == 0){
+    
+    fp=fopen(fileIn,"r");
+    fclose(fp);
+  }
+
+  if(flagS == 1){ //Buscar palavra
+
+  }
+
   //imprime(&arvore, NULL, desenho, NULL, (variavel com altura maxima para impressao da arvore aqui));
-  
-  /*lista = percorreArv(item,lista);
-  exibeItens(lista);*/
   
 }
