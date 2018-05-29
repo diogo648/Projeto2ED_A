@@ -42,7 +42,8 @@ FILE *fp;
     }
 
      if(strncmp(argv[i],"-s",2) == 0){ //Buscar palavra especifica
-
+       
+       flagS = 1; //Comando passado pelo usuario
        word = strtok(argv[i],"-s");
     }
 
@@ -80,6 +81,7 @@ FILE *fp;
   if(flagS == 1){ //Buscar palavra
 
   }
+
 
   //imprime(&arvore, NULL, desenho, NULL, (variavel com altura maxima para impressao da arvore aqui));
   
