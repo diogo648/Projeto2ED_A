@@ -3,7 +3,7 @@
 #include <string.h>
 #include "item.h"
 
-void criarItem(char palavra[], Item **raiz, int lado, int altura) {
+void CriarItem(char palavra[], Item **raiz, int lado, int altura) {
 
 	if (*raiz == NULL) {
 
@@ -31,18 +31,76 @@ void criarItem(char palavra[], Item **raiz, int lado, int altura) {
 	else if (strcmp(palavra, (*raiz)->palavra) < 0) { // Verifica se a palavra eh maior que a raiz, entra no else se for menor 
 
 		altura = altura + 1;
-		criarItem(palavra, &(*raiz)->esq, 1, altura);
+		CriarItem(palavra, &(*raiz)->esq, 1, altura);
 
 		//Comparar a proxima palavra do no
 	}
 	else {
 		altura = altura + 1;
-		criarItem(palavra, &(*raiz)->dir, 2, altura);
+		CriarItem(palavra, &(*raiz)->dir, 2, altura);
 
-	}
-	
+	}// Chama a recursão
+	 /**/
 }
 
+void CriaArvore(Item **Arvore, char palavra[], int lado, int altura, int quantidade)
+{
+	if (*Arvore == NULL) {
+
+		Item *aux = (Item*)malloc(sizeof(Item));
+
+		if (aux == NULL) {
+
+			printf("\n Erro! Heap Overflow! \n");
+		}
+		else {
+			strcpy(aux->palavra, palavra);
+			aux->quantidade = quantidade;
+			aux->esq = NULL;
+			aux->dir = NULL;
+			aux->lado = lado;
+			aux->altura = altura;
+			*Arvore = aux;
+		}
+	}
+	else if (quantidade < (*Arvore)->quantidade) { // Verifica se a palavra eh maior que a raiz, entra no else se for menor 
+
+		altura = altura + 1;
+		CriaArvore(&(*Arvore)->esq, palavra, 1, altura, quantidade);
+
+		//Comparar a proxima palavra do no
+	}
+	else if (quantidade >(*Arvore)->quantidade) {
+		altura = altura + 1;
+		CriaArvore(&(*Arvore)->dir, palavra, 2, altura, quantidade);
+
+	}
+	else
+	{
+		if (strcmp(palavra, (*Arvore)->palavra) > 0)
+		{
+			altura = altura + 1;
+			CriaArvore(&(*Arvore)->esq, palavra, 1, altura, quantidade);
+		}
+		else if (strcmp(palavra, (*Arvore)->palavra) < 0)
+		{
+			altura = altura + 1;
+			CriaArvore(&(*Arvore)->dir, palavra, 2, altura, quantidade);
+		}
+	}
+}
+
+void percorreArv(Item **Arvore, Item **Alfabetica)
+{
+	if (*Alfabetica)
+	{
+		CriaArvore(Arvore, (*Alfabetica)->palavra, 0, 1, (*Alfabetica)->quantidade);
+		percorreArv(Arvore, &(*Alfabetica)->esq);
+		percorreArv(Arvore, &(*Alfabetica)->dir);
+	}
+}
+
+/*
 void imprimeLinha(Item *raiz,int espaco)
 {
 	int i;
@@ -87,8 +145,8 @@ void imprimeLinha(Item *raiz,int espaco)
 	else
 	{
 		printf(" (altura %d)\n", raiz->altura);
-	}*/
-}
+	}
+}*/
 
 /*void imprimeNULL(int altura,int espaco)
 {
@@ -132,7 +190,7 @@ void imprimeLinha(Item *raiz,int espaco)
 	{	
 		imprimeNULL(AlAnt->altura,espaco);
 	}
-}*/
+}
 
 
 no *insereItem(char palavra[20], int quantidade)
@@ -210,7 +268,7 @@ void exibeItens(no *itens){
   }
 
 
-}
+}*/
 
 void removerItem() {
 
