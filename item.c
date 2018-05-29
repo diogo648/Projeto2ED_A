@@ -135,19 +135,83 @@ void imprimeLinha(Item *raiz,int espaco)
 }*/
 
 
-void imprimirArv(struct item *raiz){
-  
-  if(raiz){
+no *insereItem(char palavra[20], int quantidade)
+{
+	no *item = (no*)malloc(sizeof(no));
 
-    imprimirArv(raiz->esq);
-    printf("%d %s \n",raiz->quantidade,raiz->palavra);
-    imprimirArv(raiz->dir);
+        strcpy(item->palavra, palavra);
+	item->quantidade = quantidade;
+	item->prox = NULL;
 
-  }
+	return item;
+
 }
 
+no *insereOrdenado(no *lista, no *novaLista)
+{
+	no *temp = NULL, *temp1 = lista;
+    
+
+	if (temp1 == NULL)
+	{
+		lista = novaLista;//Se a lista está vazia, os novos dados são a lista
+	}
+	else
+	{
+		while (temp1 != NULL && novaLista->quantidade > temp1->quantidade)//Encontra a posição correta na lista
+		{
+
+                        
+			temp = temp1; 
+			temp1 = temp1->prox;
+		}
+
+		if (temp == NULL)//Insere na posição correta
+		{
+			novaLista->prox = lista;
+			lista = novaLista;
+		}
+		else
+		{
+
+			novaLista->prox = temp1;
+			temp->prox = novaLista;
+		}
+	}
+
+	return lista;//Retorna a lista ordenada
+}
+
+
+
+no *percorreArv(struct item *raiz, no *lista){ //RAIZ -> ESQ -> DIR
+
+no *aux = NULL;
+
+  if(raiz){
+
+    aux = insereItem(raiz->palavra,raiz->quantidade);
+    lista = insereOrdenado(lista,aux);    
+    percorreArv(raiz->esq,lista);
+    percorreArv(raiz->dir,lista);
+    
+   }
+    
+  return lista;
+}
+
+
+void exibeItens(no *itens){
+
+  while(itens){
+    
+    printf("%d %s \n",itens->quantidade,itens->palavra);
+    itens = itens->prox;
+  }
+
+
+}
 
 void removerItem() {
 
 }
-
