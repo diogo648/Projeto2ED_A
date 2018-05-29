@@ -5,39 +5,23 @@
 
 int main (int argc, char** argv) {
   
-  Item *item; 
-
-  int i;
-  char palavra[20];
-             
- for (i=1; i< argc; i++) {
-     printf("\narg%d=%s", i, argv[i]);
- }
+no *lista;
+Item *item; 
+//char * parm1; //Parametro1 passado pelo usuario no terminal
+char palavra[20];
   
-  
-  /*switch (argv[i]){
-      
-       case "-n":
-       case "-w":
-       case: "-r":
-       case: "pMAX":
-      
-      
-      
-  }*/
-  
-while(!feof(stdin)){
+  while(!feof(stdin)){
      
-  scanf("%s",palavra);
+    scanf("%s",palavra);
 
-  if(!feof(stdin)){
-   
-    //printf("%s \n", palavra);
-    criarItem(palavra,&item,0,1);
+    if(!feof(stdin)){
+
+      criarItem(palavra,&item,0,1);
+    }
+ 
   }
  
-}
-
-imprimirArv(item);
+  lista = percorreArv(item,lista);
+  exibeItens(lista);
   
 }
