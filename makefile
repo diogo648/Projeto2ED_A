@@ -1,13 +1,13 @@
 all: prog
 
 item.o: item.c
-	gcc -c item.c
-
-ST.o: ST.c
-	gcc -c ST.c
+	gcc -g -c item.c
 
 main.o: main.c
-	gcc -c main.c 
+	gcc -g -c main.c 
 
-prog: item.o ST.o main.o 
-	gcc -o prog item.o ST.o main.o -lm
+prog: item.o main.o 
+	gcc -g -o prog item.o main.o -lm
+
+clean:
+	rm -f item.o main.o prog
