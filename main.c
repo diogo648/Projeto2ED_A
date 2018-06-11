@@ -3,7 +3,7 @@
 
 //Resultados obtidos: Sucesso
 //Projeto básico:  100% concluído - Obs: ___________________________________
-//(X) Opcional 1 - Obs: ____________________________________________________
+//(X) Opcional 1 - Obs: Ao inserir o nome do arquivo no terminal, a extensão do arquivo deve ser inserida também. Ex.: -wArquivo.txt
 //(X) Opcional 2 - Obs: Ao realizar a busca pela palavra, a busca é feita na arvore que esta ordenada por ordem alfabetica
 //( ) Opcional 3 - Obs: ____________________________________________________
 //(X) Opcional 4 - Obs: ____________________________________________________
