@@ -1,3 +1,13 @@
+//Integrante 1 - Nome: Diogo Christovao Cortez      RA: 12049102
+//Integrante 2 - Nome: Marcelino Noguero de Souza   RA: 16011538
+
+//Resultados obtidos: Sucesso
+//Projeto básico:  100% concluído - Obs: ___________________________________
+//(X) Opcional 1 - Obs: ____________________________________________________
+//(X) Opcional 2 - Obs: Ao realizar a busca pela palavra, a busca é feita na arvore que esta ordenada por ordem alfabetica
+//( ) Opcional 3 - Obs: ____________________________________________________
+//(X) Opcional 4 - Obs: ____________________________________________________
+
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
