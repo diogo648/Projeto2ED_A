@@ -38,20 +38,17 @@ FILE *fp;
       
       flagR = 1; //Comando passado pelo usuario
       strcpy(fileIn,&argv[i][2]);
-      //fileIn = strtok(argv[i],"-r");
     }
 
     if(strncmp(argv[i],"-w",2) == 0){ //Salvar informacoes da tabela de simbolos em um arquivo
 
        flagW = 1; //Comando passado pelo usuario
        strcpy(fileOut,&argv[i][2]);
-       //fileOut = strtok(argv[i],"-w");
     }
 
      if(strncmp(argv[i],"-s",2) == 0){ //Buscar palavra especifica
        
        flagS = 1; //Comando passado pelo usuario
-       //word = strtok(argv[i],"-s");
 	strcpy(word,&argv[i][2]);
     }
      if(strncmp(argv[i],"-p",2) == 0){ //Desenha arvore
@@ -62,7 +59,8 @@ FILE *fp;
     }
   }
 
-
+if(flagR == 0)
+{
   while(!feof(stdin)){
      
     scanf("%s",palavra);
@@ -72,7 +70,7 @@ FILE *fp;
       CriarItem(palavra,&item,0,1);//Cria arvore por ordem alfabetica
     }
   }
-
+}
   if(flagN == 1){
 
      percorreArv(&arvore, &item);//Cria arvore por ordem de quantidade
@@ -82,7 +80,7 @@ FILE *fp;
   if(flagR == 1 && flagW == 1 || flagR == 0 && flagW == 1){ //Se o usuario passou os dois comandos -r e -w, o -w tem a prioridade
     
     fp=fopen(fileOut,"w");
-    while(lista && count <= limite)
+    while(lista && count < limite)
     {
         fprintf(fp, "%d %s\n",lista->quantidade, lista->palavra);//Escreve o conteudo da lista no arquivo recem criado
         lista = lista->prox;
@@ -93,11 +91,10 @@ FILE *fp;
 
   if(flagR == 1 && flagW == 0){
     fp = fopen(fileIn,"r");
-    while((fscanf(fp,"%s %s",quantidade, palavra)) != EOF)
+    while(count < limite && (fscanf(fp,"%s %s",quantidade, palavra)) != EOF)
     {
-       //fscanf(fp,"%[^\n]",palavra);
        printf("%s %s\n",quantidade,palavra);
-       //count++;
+       count++;
     }
     fclose(fp);
   }
